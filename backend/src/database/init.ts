@@ -43,24 +43,14 @@ export function initDatabase(): Database.Database {
 
   // TODO: Complete the bookings table schema.
   //
-  // The table below only has `id` and `room_id`. You need to add columns for:
-  //   - customer_name (required text)
-  //   - customer_email (required text)
-  //   - check_in (required date, stored as ISO 8601 text)
-  //   - check_out (required date, stored as ISO 8601 text)
-  //   - created_at (date, stored as ISO 8601 text)
-  //
-  // Consider:
-  //   - What constraints make sense? (NOT NULL, CHECK, etc.)
-  //   - Should check_out always be after check_in?
-  //   - What about the foreign key relationship with rooms?
+  // The table below only has `id` 
+  // Add the rest of the columns
   //
   // Hint: SQLite stores dates as TEXT in ISO 8601 format (e.g. '2026-03-10T00:00:00.000Z')
   //
   db.exec(`
     CREATE TABLE IF NOT EXISTS bookings (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      room_id INTEGER NOT NULL REFERENCES rooms(id)
+      id INTEGER PRIMARY KEY AUTOINCREMENT
     )
   `);
 

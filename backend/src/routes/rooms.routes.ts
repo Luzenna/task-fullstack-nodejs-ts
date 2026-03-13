@@ -68,20 +68,17 @@ export function createRoomsRouter(repository: IBookingRepository): Router {
   // TODO: GET /api/rooms/:id/availability?checkIn=2026-03-01&checkOut=2026-03-05
   //
   // Check if a specific room is available for the given date range.
-  // Return an AvailabilityResponse with:
-  //   - available: true/false
-  //   - If not available, include the conflicting booking dates in conflicts
+  //
+  // Look at the frontend (frontend/src/api/client.ts and frontend/src/types/index.ts)
+  // to understand the expected response shape (AvailabilityResponse).
   //
   // Consider:
   //   - What if the room doesn't exist? (404)
-  //   - What if checkOut is before or equal to checkIn? (400)
-  //   - What if dates are missing? (400)
+  //   - What if dates are invalid or missing? (400)
   //
   // Hints:
-  // - Parse query params: req.query.checkIn, req.query.checkOut (they are strings)
-  // - Use repository.isRoomAvailable() to check availability
-  // - Use repository.getBookingsForRoomInRange() to get conflicting bookings
-  // - Format dates as ISO strings (toISOString()) for the response
+  // - Query params are strings: req.query.checkIn, req.query.checkOut
+  // - Use the repository methods to check availability and get conflicts
   //
   router.get('/:id/availability', (req: Request, res: Response) => {
     // TODO: Implement this endpoint

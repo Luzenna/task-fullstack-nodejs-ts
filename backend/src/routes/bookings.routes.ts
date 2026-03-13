@@ -7,24 +7,17 @@ export function createBookingsRouter(repository: IBookingRepository): Router {
 
   // TODO: POST /api/bookings
   //
-  // Create a new booking. Request body is CreateBookingRequest:
-  //   { roomId, customerName, customerEmail, checkIn, checkOut }
+  // Create a new booking.
   //
   // On success: Return 201 Created with the BookingDto
   // If room not available: Return 409 Conflict
   // If validation fails: Return 400 Bad Request
   //
-  // Consider:
-  //   - What makes a valid booking request? (required fields, valid dates, room exists)
-  //   - The repository throws Error('Room is not available...') if room is not available
-  //   - What should the response body contain for errors?
-  //
   // Hints:
-  // - The request body shape matches CreateBookingRequest (see dtos/create-booking.dto.ts)
-  // - Parse date strings to Date objects for the repository
-  // - Use try/catch to handle the repository error for unavailable rooms
-  // - Map the returned Booking to BookingDto (dates as ISO strings)
-  // - Return res.status(201).json(bookingDto)
+  // - Look at the frontend API client (frontend/src/api/client.ts) to understand the expected request/response shape
+  // - Complete the CreateBookingRequest and BookingDto interfaces to match
+  // - The repository throws Error('Room is not available...') if room is not available
+  // - Use try/catch to handle the repository error
   //
   router.post('/', (req: Request, res: Response) => {
     // TODO: Implement this endpoint
