@@ -2,7 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { InMemoryBookingRepository } from './repositories/in-memory-booking.repository.js';
+import { initDatabase } from './database/init.js';
+import { SqliteBookingRepository } from './repositories/sqlite-booking.repository.js';
 import { createRoomsRouter } from './routes/rooms.routes.js';
 import { createBookingsRouter } from './routes/bookings.routes.js';
 import { errorHandler } from './middleware/error-handler.js';
@@ -17,8 +18,9 @@ app.use(cors({ origin: ['http://localhost:5173', 'http://localhost:3001'] }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Repository (singleton — same instance shared across all routes)
-const repository = new InMemoryBookingRepository();
+// Database & Repository
+const db = initDatabase();
+const repository = new SqliteBookingRepository(db);
 
 // Routes
 app.use('/api/rooms', createRoomsRouter(repository));

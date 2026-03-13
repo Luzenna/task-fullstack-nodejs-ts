@@ -13,6 +13,7 @@ npm run dev
 ```
 
 - API runs at http://localhost:5000
+- SQLite database (`booking.db`) is created automatically on first run
 
 ### 2. Start the Frontend
 
@@ -26,7 +27,16 @@ npm run dev
 
 ## Your Task
 
-### Backend (Node.js + Express + TypeScript)
+### Backend (Node.js + Express + TypeScript + SQLite)
+
+In `src/database/init.ts`:
+- ❌ Complete the `bookings` table schema (add missing columns)
+
+In `src/repositories/sqlite-booking.repository.ts`:
+- ❌ Implement `getBookingsForRoomInRange()` - SQL query with date overlap
+- ❌ Implement `isRoomAvailable()` - SQL query checking availability
+- ❌ Implement `getAvailableRooms()` - SQL query for available rooms
+- ❌ Implement `createBooking()` - INSERT with validation
 
 In `src/routes/rooms.routes.ts`:
 - ❌ `GET /api/rooms` - TODO (add optional `isAvailable` filtering)
@@ -49,12 +59,13 @@ In `src/routes/bookings.routes.ts`:
 ## What's Already Provided
 
 ### Backend
-- In-memory repository with sample room and booking data
+- SQLite database setup with `better-sqlite3` (rooms table created and seeded)
 - TypeScript interfaces and DTOs
-- Repository interface and implementation
+- Repository interface and partial SQLite implementation (room queries done)
 - Express app setup with CORS and static file serving
 - Error handling middleware
 - One working endpoint as reference (`GET /api/rooms/:id`)
+- Row-to-model mapping helpers in the repository
 
 ### Frontend
 - API client functions in `src/api/client.ts`
